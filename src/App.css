@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.card{
+  display: flex;
+  background-color: rgba(241, 80, 80);
+  border: 2px solid black;
+  align-items: center;
+}
+
+
+.card.completed {
+  background-color: rgb(55, 153, 55);
+}
+
+form {
+  margin-bottom: 15px;
+}

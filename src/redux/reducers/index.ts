@@ -1,40 +1,10 @@
-export interface CounterState {
-    count : number
-}
+/* import { combineReducers } from "redux";
+import userReducser from "./UserReducser";
+import counterReducer from "./counterReducer";
 
-type IncrementAction = {type : "INCREMENT", payload : number}
-type DecrementAction = {type : "DECREMENT", payload : number}
-type ResetAction = {type : "RESET"}
+const allReducers = combineReducers({
+    user : userReducser,
+    counter : counterReducer,
+})
 
-type Action = IncrementAction | DecrementAction | ResetAction
-
-export default function counterReducer(state : CounterState , action : Action) {
-    switch (action.type) {
-        case "INCREMENT":
-            
-            return{
-                ...state,
-                count : action.payload + state.count
-            }
-
-        case "DECREMENT":
-            
-            return{
-                ...state,
-                count :  state.count - action.payload 
-            }
-
-        case "RESET":
-            
-            return{
-                ...state,
-                count : 0
-            }
-    
-        default:
-            return{
-                ...state,
-                count : 0
-            }
-    }
-}
+export default allReducers */

@@ -1,13 +1,21 @@
-import reactLogo from './assets/react.svg'
+/* mport reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import type { CounterState } from './redux/reducers'
 import { decrementAction, resetAction, incrementAction } from './redux/actions'
-import { useRef } from 'react'
+import { useRef } from 'react' */
+import { useDispatch, useSelector } from 'react-redux'
+import './App.css'
+import { addTask, type Todo } from './redux1/slices'
+import Card from './Todo/Todo'
+import { useRef, type FormEvent } from 'react'
+
+type State = {todos : {
+  todos : Array<Todo>
+}}
 
 function App() {
-  const count : number = useSelector((state : CounterState) => state?.count)
+/*   const count : number = useSelector((state : CounterState) => state?.count)
   const num = useRef<HTMLInputElement>(null)
   const dispatch = useDispatch()
   const increment = () => {
@@ -26,10 +34,21 @@ function App() {
 
       const reset = () => {
     dispatch(resetAction())
+  } */
+
+    const text = useRef<HTMLInputElement>(null)
+ const todos = useSelector((state : State) => state.todos.todos)
+ const dispatch = useDispatch()
+const handelAdd = (event : FormEvent) => {
+  event.preventDefault()
+  if (text.current?.value) {
+     dispatch(addTask(text.current?.value))
+     text.current.value = ""
   }
+}
   return (
     <>
-      <div>
+ {/*      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -50,7 +69,14 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
+      <form onSubmit={handelAdd}>
+        <input type="text" placeholder='task title' ref={text} />
+        <input type="submit" value= "add" />
+      </form>
+      {todos.map((todo) => {
+        return (<Card key = {todo.id} todo = {todo}/>)
+      })}
     </>
   )
 }

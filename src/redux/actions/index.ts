@@ -1,4 +1,4 @@
-export function incrementAction(number : number) {
+/* export function incrementAction(number : number) {
     return {
         type : "INCREMENT",
         payload : number
@@ -17,4 +17,4 @@ export function resetAction() {
         type : "RESET",
         payload : ''
     }
-}
+} */
